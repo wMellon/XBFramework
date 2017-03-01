@@ -1,4 +1,9 @@
 PODS:
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
+  - LKDBHelper (2.4.1):
+    - FMDB
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -10,15 +15,18 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
+  - LKDBHelper
   - ReactiveCocoa (~> 2.0)
   - SDAutoLayout
   - YYModel
 
 SPEC CHECKSUMS:
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  LKDBHelper: 531581fa6a7d0f14236cc028ce0d277bca73436a
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDAutoLayout: e9b36d04b8c0b504762a04d76fbbe5108944297a
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: dcdc82becdf2f53985d5f86ba872a12cc7efe03f
+PODFILE CHECKSUM: 423dd30354ae1b05d64dccd8fac93c621664ee48
 
 COCOAPODS: 1.2.0
