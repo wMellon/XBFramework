@@ -9,6 +9,7 @@
 #import "UserInfoVC.h"
 #import "UserinfoView.h"
 #import "UserinfoViewModel.h"
+#import "UIViewController+PagingRefreshLoadMore.h"
 
 @interface UserInfoVC ()<UITableViewDataSource>
 
@@ -32,6 +33,9 @@ static NSString *defaultCellID = @"DefaultCellID";
     self.view = self.userinfoView;
     self.userinoViewModel = [[UserinfoViewModel alloc] init];
     self.userinfoView.userinoViewModel = self.userinoViewModel;
+    [self.userinfoView setNeedsLayout];
+    [self.userinfoView layoutIfNeeded];
+    [self setPRLMTableView:self.userinfoView.tableView pageSize:3 pageBegin:1];
 }
 
 -(void)xb_bindViewModel{
@@ -64,4 +68,8 @@ static NSString *defaultCellID = @"DefaultCellID";
     return cell;
 }
 
+-(void)loadViewDataByPageIndex:(NSString*)pageIndex block:(void(^)(NSInteger count))block{
+    [self.userinoViewModel.refreshUISubject sendNext:nil];
+    block(2);
+}
 @end

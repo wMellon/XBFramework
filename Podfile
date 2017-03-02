@@ -6,4 +6,5 @@ target 'XBFramework' do
   pod 'YYModel'
   pod 'ReactiveCocoa', '~> 2.0' ##高版本是swift
   pod 'LKDBHelper'#sqlite ORM
+  pod 'MJRefresh'
 end

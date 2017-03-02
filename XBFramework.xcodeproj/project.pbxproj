@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		056F2A2C3F9FD2DA03CA7773 /* libPods-XBFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C38C95FCFCF1DD0D72DCA82E /* libPods-XBFramework.a */; };
 		280728EF1E66AC14001563F8 /* NSObject+XBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 280728EE1E66AC14001563F8 /* NSObject+XBModel.m */; };
+		280728FA1E67EBE4001563F8 /* UIViewController+PagingRefreshLoadMore.m in Sources */ = {isa = PBXBuildFile; fileRef = 280728F91E67EBE4001563F8 /* UIViewController+PagingRefreshLoadMore.m */; };
 		2827DA661E5E7DAC00AB1439 /* GlobalClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2827DA651E5E7DAC00AB1439 /* GlobalClass.m */; };
 		2827DA741E5E7F3800AB1439 /* UserinfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2827DA6A1E5E7F3800AB1439 /* UserinfoModel.m */; };
 		2827DA751E5E7F3800AB1439 /* UserinfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2827DA6D1E5E7F3800AB1439 /* UserinfoView.m */; };
@@ -29,6 +30,8 @@
 		01A7C7886BBAC2017F778139 /* Pods-XBFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XBFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XBFramework/Pods-XBFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		280728ED1E66AC14001563F8 /* NSObject+XBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XBModel.h"; sourceTree = "<group>"; };
 		280728EE1E66AC14001563F8 /* NSObject+XBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XBModel.m"; sourceTree = "<group>"; };
+		280728F81E67EBE4001563F8 /* UIViewController+PagingRefreshLoadMore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PagingRefreshLoadMore.h"; sourceTree = "<group>"; };
+		280728F91E67EBE4001563F8 /* UIViewController+PagingRefreshLoadMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PagingRefreshLoadMore.m"; sourceTree = "<group>"; };
 		2827DA641E5E7DAC00AB1439 /* GlobalClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalClass.h; sourceTree = "<group>"; };
 		2827DA651E5E7DAC00AB1439 /* GlobalClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalClass.m; sourceTree = "<group>"; };
 		2827DA691E5E7F3800AB1439 /* UserinfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserinfoModel.h; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 		280728EC1E66ABDC001563F8 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				280728F81E67EBE4001563F8 /* UIViewController+PagingRefreshLoadMore.h */,
+				280728F91E67EBE4001563F8 /* UIViewController+PagingRefreshLoadMore.m */,
 				280728ED1E66AC14001563F8 /* NSObject+XBModel.h */,
 				280728EE1E66AC14001563F8 /* NSObject+XBModel.m */,
 			);
@@ -277,7 +282,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				"zh-Hans",
 			);
 			mainGroup = 28EE91461E543C4400FDCB01;
 			productRefGroup = 28EE91501E543C4500FDCB01 /* Products */;
@@ -363,6 +368,7 @@
 				2827DA881E5E844F00AB1439 /* LoginView.m in Sources */,
 				2827DA851E5E83CE00AB1439 /* LoginVC.m in Sources */,
 				280728EF1E66AC14001563F8 /* NSObject+XBModel.m in Sources */,
+				280728FA1E67EBE4001563F8 /* UIViewController+PagingRefreshLoadMore.m in Sources */,
 				28EE917D1E5440F800FDCB01 /* BaseSDAutoView.m in Sources */,
 				2827DA821E5E7F9700AB1439 /* AccountModel.m in Sources */,
 				2827DA7E1E5E7F4B00AB1439 /* main.m in Sources */,
@@ -377,6 +383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -425,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

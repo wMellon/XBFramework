@@ -25,6 +25,7 @@
  *  @return
  */
 #define enumToString(enum) [NSString stringWithFormat:@"%d", enum]
+#define NSIntegerToString(integer) [NSString stringWithFormat:@"%ld",integer]
 
 //弱引用
 #define XBWeakSelfDefine __weak typeof(self) weakSelf = self;
@@ -33,5 +34,7 @@
 #pragma mark - 通知定义
 
 #define NSNotificationLoginStateChg @"LoginStateChg"  //登录状态改变通知
+
+
 
 #endif /* MacroDefinition_h */
