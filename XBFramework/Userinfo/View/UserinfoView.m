@@ -43,8 +43,4 @@
     .topSpaceToView(_header, 0)
     .bottomSpaceToView(_footer, 0);
 }
-
--(void)xb_bindViewModel{
-    
-}
 @end

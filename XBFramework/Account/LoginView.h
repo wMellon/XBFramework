@@ -10,4 +10,6 @@
 
 @interface LoginView : BaseSDAutoView
 
+@property (nonatomic, strong) UIButton *loginBtn;
+
 @end

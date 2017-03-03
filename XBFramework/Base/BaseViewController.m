@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.navigationItem.leftBarButtonItem = self.leftButtonItem;
     [self xb_setup];
     [self xb_bindViewModel];
     [self xb_loadViewData];
@@ -37,5 +38,18 @@
 -(void)xb_bindViewModel{}
 
 -(void)xb_loadViewData{}
+
+#pragma mark - properties
+
+-(UIBarButtonItem*)leftButtonItem{
+    if (!_leftButtonItem) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame=CGRectMake(5, 6,10,18);
+        [btn setImage:[UIImage imageNamed:@"goBack"] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(goBack)forControlEvents:UIControlEventTouchUpInside];
+        _leftButtonItem=[[UIBarButtonItem alloc]initWithCustomView:btn];
+    }
+    return _leftButtonItem;
+}
 
 @end
