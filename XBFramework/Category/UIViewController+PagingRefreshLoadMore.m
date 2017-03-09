@@ -9,19 +9,27 @@
 #import "UIViewController+PagingRefreshLoadMore.h"
 #import "MJRefresh.h"
 
-static NSInteger pageSize;
-static NSInteger pageBegin;
-static NSInteger pageIndex;
-static UITableView *prlm_tableView;
+//宏定义
+#define prlmTableD [self prlmTablView]
+#define prlmPageSizeD [self prlmPageSize]
+#define prlmPageBeginD [self prlmPageBegin]
+#define prlmPageIndexD [self prlmPageIndex]
+
+static const char TableViewKey;
+static const char PageSizeKey;
+static const char PageBeginKey;
+static const char PageIndexKey;
+
 @implementation UIViewController (PagingRefreshLoadMore)
 
 -(void)setPRLMTableView:(UITableView*)tableView
                pageSize:(NSInteger)size
               pageBegin:(NSInteger)index{
-    prlm_tableView = tableView;
-    pageSize = size;
-    pageBegin = index;
-    pageIndex = pageBegin;
+    [self setPRLMTableView:tableView];
+    [self setPRLMPageSize:size];
+    [self setPRLMPageBegin:index];
+    [self setPRLMPageIndex:index];
+    
     XBWeakSelfDefine
     tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         //下拉刷新
@@ -34,28 +42,62 @@ static UITableView *prlm_tableView;
 }
 
 -(void)rlm_reloadViewData{
-    pageIndex = pageBegin;
-    [self loadViewDataByPageIndex:NSIntegerToString(pageBegin) block:^(NSInteger count) {
-        [prlm_tableView.mj_header endRefreshing];
-        [prlm_tableView.mj_footer resetNoMoreData];
-        if(count < pageSize){
-            [prlm_tableView.mj_footer endRefreshingWithNoMoreData];
+    [self setPRLMPageIndex:prlmPageBeginD];
+    [self loadViewDataByPageIndex:[NSString stringWithFormat:@"%ld", (long)prlmPageBeginD] block:^(NSInteger count) {
+        [prlmTableD.mj_header endRefreshing];
+        [prlmTableD.mj_footer resetNoMoreData];
+        if(count < prlmPageSizeD){
+            [prlmTableD.mj_footer endRefreshingWithNoMoreData];
         }
     }];
 }
 
 -(void)rlm_loadMoreDataSource{
-    pageIndex ++;
-    [self loadViewDataByPageIndex:NSIntegerToString(pageIndex) block:^(NSInteger count) {
-        if(count < pageSize){
+    [self setPRLMPageIndex:prlmPageIndexD + 1];
+    [self loadViewDataByPageIndex:[NSString stringWithFormat:@"%ld", (long)prlmPageIndexD] block:^(NSInteger count) {
+        if(count < prlmPageSizeD){
             //没有更多数据了
-            [prlm_tableView.mj_footer endRefreshingWithNoMoreData];
+            [prlmTableD.mj_footer endRefreshingWithNoMoreData];
         }else{
-            [prlm_tableView.mj_footer endRefreshing];
+            [prlmTableD.mj_footer endRefreshing];
         }
     }];
 }
 
 -(void)loadViewDataByPageIndex:(NSString*)pageIndex block:(void(^)(NSInteger count))block{}
+
+#pragma mark - properties
+
+-(void)setPRLMTableView:(UITableView*)tableView{
+    objc_setAssociatedObject(self, &TableViewKey, tableView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(UITableView*)prlmTablView{
+    return objc_getAssociatedObject(self, &TableViewKey);
+}
+
+-(void)setPRLMPageSize:(NSInteger)pageSize{
+    objc_setAssociatedObject(self, &PageSizeKey, @(pageSize), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(NSInteger)prlmPageSize{;
+    return [objc_getAssociatedObject(self, &PageSizeKey) integerValue];
+}
+
+-(void)setPRLMPageBegin:(NSInteger)pageBegin{
+    objc_setAssociatedObject(self, &PageBeginKey, @(pageBegin), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(NSInteger)prlmPageBegin{
+    return [objc_getAssociatedObject(self, &PageBeginKey) integerValue];
+}
+
+-(void)setPRLMPageIndex:(NSInteger)pageIndex{
+    objc_setAssociatedObject(self, &PageIndexKey, @(pageIndex), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(NSInteger)prlmPageIndex{
+    return [objc_getAssociatedObject(self, &PageIndexKey) integerValue];
+}
 
 @end
