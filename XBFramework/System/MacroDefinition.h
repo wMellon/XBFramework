@@ -20,6 +20,12 @@
 
 #define FontSize(size) [UIFont systemFontOfSize:size];
 
+
+/**
+ 项目中有用到设置高度、宽度为1的都用这个设置
+ */
+#define  SINGLE_LINE_HEIGHT   (1 / [UIScreen mainScreen].scale)
+
 /**
  *  将enum转换成string。
  *  注：只是普通的转换
