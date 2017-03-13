@@ -15,11 +15,6 @@
 #define prlmPageBeginD [self prlmPageBegin]
 #define prlmPageIndexD [self prlmPageIndex]
 
-//static const char TableViewKey;
-//static const char PageSizeKey;
-//static const char PageBeginKey;
-//static const char PageIndexKey;
-
 @implementation UIViewController (PagingRefreshLoadMore)
 
 -(void)setPRLMTableView:(UITableView*)tableView
