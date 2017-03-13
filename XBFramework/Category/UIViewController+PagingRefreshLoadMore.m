@@ -15,10 +15,10 @@
 #define prlmPageBeginD [self prlmPageBegin]
 #define prlmPageIndexD [self prlmPageIndex]
 
-static const char TableViewKey;
-static const char PageSizeKey;
-static const char PageBeginKey;
-static const char PageIndexKey;
+//static const char TableViewKey;
+//static const char PageSizeKey;
+//static const char PageBeginKey;
+//static const char PageIndexKey;
 
 @implementation UIViewController (PagingRefreshLoadMore)
 
@@ -69,35 +69,35 @@ static const char PageIndexKey;
 #pragma mark - properties
 
 -(void)setPRLMTableView:(UITableView*)tableView{
-    objc_setAssociatedObject(self, &TableViewKey, tableView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(prlmTablView), tableView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(UITableView*)prlmTablView{
-    return objc_getAssociatedObject(self, &TableViewKey);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
 -(void)setPRLMPageSize:(NSInteger)pageSize{
-    objc_setAssociatedObject(self, &PageSizeKey, @(pageSize), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(prlmPageSize), @(pageSize), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(NSInteger)prlmPageSize{;
-    return [objc_getAssociatedObject(self, &PageSizeKey) integerValue];
+    return [objc_getAssociatedObject(self, _cmd) integerValue];
 }
 
 -(void)setPRLMPageBegin:(NSInteger)pageBegin{
-    objc_setAssociatedObject(self, &PageBeginKey, @(pageBegin), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(prlmPageBegin), @(pageBegin), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(NSInteger)prlmPageBegin{
-    return [objc_getAssociatedObject(self, &PageBeginKey) integerValue];
+    return [objc_getAssociatedObject(self, _cmd) integerValue];
 }
 
 -(void)setPRLMPageIndex:(NSInteger)pageIndex{
-    objc_setAssociatedObject(self, &PageIndexKey, @(pageIndex), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(prlmPageIndex), @(pageIndex), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(NSInteger)prlmPageIndex{
-    return [objc_getAssociatedObject(self, &PageIndexKey) integerValue];
+    return [objc_getAssociatedObject(self, _cmd) integerValue];
 }
 
 @end
